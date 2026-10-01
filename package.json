@@ -5,14 +5,14 @@
     "prepare": "husky",
     "dev": "pnpm run dev:customer",
     "dev:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run dev",
-    "dev:marketing": "pnpm --dir ./apps/marketing run dev",
+    "dev:marketing": "pnpm --filter ./apps/marketing --fail-if-no-match run dev",
     "lint": "oxlint",
     "lint:fix": "oxlint --fix",
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "build": "pnpm run build:customer",
     "build:customer": "pnpm --filter ./apps/customer-portal run build",
-    "build:marketing": "pnpm --dir ./apps/marketing run build"
+    "build:marketing": "pnpm --filter ./apps/marketing --fail-if-no-match run build"
   },
   "devDependencies": {
     "husky": "^9.1.7",
