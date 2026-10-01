@@ -1,6 +1,6 @@
 packages:
-  - 'apps/*'
-  - 'packages/*'
+  - "apps/*"
+  - "packages/*"
 
 # One dependency lockfile for the entire repository.
 sharedWorkspaceLockfile: true
@@ -10,3 +10,6 @@ enablePrePostScripts: true
 
 # Review dependency install scripts instead of automatically trusting all of them.
 strictDepBuilds: true
+
+allowBuilds:
+  esbuild: set this to true or false
