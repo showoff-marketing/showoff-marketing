@@ -1,14 +1,32 @@
 {
   "name": "@showoff/workspace",
   "private": true,
-  "packageManager": "pnpm@12.8.1",
+  "scripts": {
+    "prepare": "husky",
+    "dev": "pnpm run dev:customer",
+    "dev:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run dev",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "build": "pnpm run build:customer",
+    "build:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run build"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.6.0",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx,mjs,cjs,mts,cts}": [
+      "oxlint --fix",
+      "oxfmt --write"
+    ],
+    "**/*.{json,jsonc,md,mdx,css,scss,html,yml,yaml}": "oxfmt --write"
+  },
   "engines": {
     "node": ">=22.13.0"
   },
-  "scripts": {
-    "dev": "pnpm run dev:customer",
-    "dev:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run dev",
-    "build": "pnpm run build:customer",
-    "build:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run build"
-  }
+  "packageManager": "pnpm@12.8.1"
 }
