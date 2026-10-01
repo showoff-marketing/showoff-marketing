@@ -1,0 +1,14 @@
+{
+  "name": "@showoff/workspace",
+  "private": true,
+  "packageManager": "pnpm@12.8.1",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "pnpm run dev:customer",
+    "dev:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run dev",
+    "build": "pnpm run build:customer",
+    "build:customer": "pnpm --filter ./apps/customer-portal --fail-if-no-match run build"
+  }
+}

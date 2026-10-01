@@ -1,0 +1,12 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+# One dependency lockfile for the entire repository.
+sharedWorkspaceLockfile: true
+
+# Preserve npm-style pre/post hooks for the application's existing scripts.
+enablePrePostScripts: true
+
+# Review dependency install scripts instead of automatically trusting all of them.
+strictDepBuilds: true
