@@ -1,0 +1,116 @@
+{
+  "title": "Choose a visual direction for customer sign-in and setup",
+  "question": "Which direction should shape customer sign-in and organization setup? What should carry forward, what feels false to Showoff, and should the selected concept be approved, combined, revised, or rejected?",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Workspace Docket",
+      "kicker": "THE ROLL",
+      "lineage": "A small-business service docket with numbered, carbon-copy steps",
+      "thesis": "Signing in is the first clear step into a customer workspace.",
+      "palette": ["#f5f2e9", "#171b21", "#14375a", "#bd3b33"],
+      "materials": ["docket stock", "carbon fields", "numbered tabs"],
+      "viewport": "A single setup docket presents Google and Apple sign-in, email and password, and one Continue action without implying an existing organization.",
+      "risk": "The service-form structure can feel procedural if the first step is not welcoming.",
+      "raised": [
+        {
+          "from": "jet-age ticket wallet",
+          "raise": "Progress stays visible, and session or validation states remain explicit rather than disappearing."
+        }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned.png"
+    },
+    {
+      "id": "challenger-japanese-density",
+      "label": "Utility-Red Account Index",
+      "verdict": "competitive",
+      "lineage": "Contemporary Japanese high-density web interfaces",
+      "thesis": "Compact account modules keep sign-in choices and setup steps in one scan.",
+      "palette": ["#ffffff", "#171717", "#c43128", "#e5e6e8"],
+      "materials": ["ruled modules", "utility-red labels", "hairline borders"],
+      "viewport": "A clearly separated provider area, email form, and next-step summary share one strict grid.",
+      "case": "Fuses cleanly: the structure clarifies provider and password entry; high density may be less comfortable for first-time owners.",
+      "risk": "Small labels can make a sensitive first-use task harder to scan.",
+      "comp": ".impeccable/mocks/decision/dense-index.png",
+      "hero": "https://impeccable.style/worlds/cards/japanese-high-density-web-hero.webp"
+    },
+    {
+      "id": "challenger-vertical-video",
+      "label": "Full-Viewport Media Feed",
+      "verdict": "declined",
+      "lineage": "Vertical video-feed surfaces",
+      "thesis": "One full-screen media item leads into the customer journey.",
+      "palette": ["#101010", "#ffffff"],
+      "materials": ["full-bleed media", "action rail", "bottom scrim"],
+      "case": "Fuses poorly: sign-in and organization setup are form tasks, not a media sequence.",
+      "risk": "A background video would distract from account access.",
+      "kept": "Keep the primary account task focused within the viewport.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-vertical-video-feed-surface-hero.webp"
+    },
+    {
+      "id": "challenger-zoo-map",
+      "label": "Opening-Day Guide Map",
+      "verdict": "declined",
+      "lineage": "A zoo and gardens guide map",
+      "thesis": "A widening map lobe shows the route from sign-in into a workspace.",
+      "palette": ["#8ed462", "#f5f1e4", "#2c2e2a", "#f5e211"],
+      "materials": ["flat map shapes", "coastline divisions", "capsule markers"],
+      "case": "Fuses poorly: the map does not clarify credential entry or account recovery.",
+      "risk": "Map controls may be mistaken for navigation rather than setup progress.",
+      "kept": "A progress path should make the next step clear.",
+      "hero": "https://impeccable.style/worlds/cards/aww2-zoo-gardens-guide-map-hero.webp"
+    },
+    {
+      "id": "challenger-orienteering",
+      "label": "Orienteering Course Map",
+      "verdict": "declined",
+      "lineage": "An orienteering map and legend",
+      "thesis": "The account route is a fixed map with a clearly marked next control.",
+      "palette": ["#ffffff", "#5b6e3c", "#d7c84a", "#7a3dc1"],
+      "materials": ["contour lines", "symbol legend", "course overlay"],
+      "case": "Fuses poorly: navigation symbolism adds decoding work to authentication.",
+      "risk": "The user has no need to choose a route through sign-in.",
+      "kept": "Show which setup step is current and what follows.",
+      "hero": "https://impeccable.style/worlds/cards/notation-diagram-systems-orienteering-map-hero.webp"
+    },
+    {
+      "id": "challenger-airline-wallet",
+      "label": "Jet-Age Ticket Wallet",
+      "verdict": "declined",
+      "lineage": "A mid-century airline ticket wallet",
+      "thesis": "Account creation unfolds as a compact wallet of sequential coupons.",
+      "palette": ["#ffffff", "#102b4e", "#be2430", "#5b4262"],
+      "materials": ["coupon stock", "carbon figures", "route map"],
+      "case": "Fuses poorly: travel paperwork is less recognizable than a work setup form to this audience.",
+      "risk": "Flight cues may make the app feel like a travel service.",
+      "kept": "Keep setup stages in order and show which remain.",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-jet-age-ticket-wallet-hero.webp"
+    },
+    {
+      "id": "challenger-exposure-record",
+      "label": "Darkroom Exposure Record",
+      "verdict": "declined",
+      "lineage": "A printer's exposure-record sheet",
+      "thesis": "Account fields use distinct marks to show validated, pending, or held states.",
+      "palette": ["#f1eee6", "#171717", "#cc2376"],
+      "materials": ["translucent sheets", "zone ramp", "cross-hatching"],
+      "case": "Fuses poorly: the specialist darkroom grammar is unfamiliar during basic account setup.",
+      "risk": "Technical notation can raise cognitive load.",
+      "kept": "Use clear non-color cues for errors and validation.",
+      "hero": "https://impeccable.style/worlds/cards/operate-b-exposure-record-zone-sheets-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "comp", "toggle": true },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A familiar sign-in screen makes account access direct and predictable.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["plain form", "simple logo-free header"],
+    "viewport": "A compact sign-in panel offers provider buttons, email and password fields, and a create-account link.",
+    "risk": "The form may be difficult to distinguish from other SaaS sign-in pages.",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}

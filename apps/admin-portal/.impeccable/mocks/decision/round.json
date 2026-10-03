@@ -1,0 +1,76 @@
+{
+  "title": "Choose a visual direction for the admin overview",
+  "question": "Which direction should shape the internal operations overview? What should carry forward, what feels false to Showoff, and should the selected concept be approved, combined, revised, or rejected? The Tenant Field Folio, Catalog Sleeve, and Datamatics Signal Field remain in the re-roll pool: they narrow the overview to one workflow, add styling without state clarity, or require real connected measures.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Run of Show",
+      "kicker": "THE ROLL",
+      "lineage": "A production cue sheet that keeps operators oriented across a sequence",
+      "thesis": "One clear operations cue sheet brings tenant, support, and provider-health work into view.",
+      "palette": ["#f2eee5", "#192534", "#b53d31", "#5b7588"],
+      "materials": ["ruled cue sheet", "numbered work sections", "red attention marks"],
+      "viewport": "An operator rail frames three numbered overview sections: Tenant, Support, and Provider health. Each has an explicit unavailable state until its real data source is connected.",
+      "risk": "The cue-sheet structure could feel theatrical if the interface performs the metaphor instead of keeping operational status clear.",
+      "raised": [
+        {
+          "from": "streaming-wall challenger",
+          "raise": "Unavailable and attention states use text and shape as well as color, so health remains legible without color alone."
+        }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned.png"
+    },
+    {
+      "id": "challenger-design-annual",
+      "label": "Operations Plate Index",
+      "verdict": "competitive",
+      "lineage": "A design annual's precise plate and index system",
+      "thesis": "A disciplined index makes tenant, support, and provider status easy to scan.",
+      "palette": ["#f7f6f2", "#181818", "#2459d3", "#c8c7c2"],
+      "materials": ["editorial index", "hairline rules", "plate labels"],
+      "viewport": "A single page organizes Tenant, Support, and Provider health as clearly labeled sections with honest no-data or unavailable states.",
+      "case": "Fuses cleanly: the index has strong scan clarity; it offers less guidance through an operator's sequence of work.",
+      "risk": "Editorial labels could make frequent operational actions feel too quiet.",
+      "comp": ".impeccable/mocks/decision/design-index.png"
+    },
+    {
+      "id": "challenger-railway-timetable",
+      "label": "Operations Timetable",
+      "verdict": "declined",
+      "lineage": "A railway timetable rack and its at-a-glance status grammar",
+      "thesis": "A stable timetable helps operators find the next operational section quickly.",
+      "palette": ["#f4f0e7", "#17283d", "#c54032", "#d3d0c8"],
+      "materials": ["station-board rows", "fixed columns", "status markers"],
+      "case": "The product has no scheduled service departures to display.",
+      "risk": "Time and departure language could falsely imply live operational timing.",
+      "kept": "Keep section order stable and make each state readable at a glance.",
+      "hero": "https://impeccable.style/worlds/cards/transport-railway-timetable-rack-hero.webp"
+    },
+    {
+      "id": "challenger-streaming-wall",
+      "label": "Streaming Status Wall",
+      "verdict": "declined",
+      "lineage": "A broadcast operations control wall",
+      "thesis": "A status wall surfaces changing operational signals at once.",
+      "palette": ["#111820", "#e8f0f2", "#da4336", "#45a580"],
+      "materials": ["signal panels", "attention bands", "live-state labels"],
+      "case": "There are no real connected signals or operator telemetry in the current project data.",
+      "risk": "A live-wall composition could imply monitoring data that is not available.",
+      "kept": "Unavailable and attention states must be legible through text and shape, never color alone.",
+      "hero": "https://impeccable.style/worlds/cards/operations-control-room-streaming-wall-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "comp", "toggle": true },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A familiar admin dashboard groups core operations into straightforward sections.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["standard navigation rail", "plain status panels", "clear section headings"],
+    "viewport": "A conventional overview organizes Tenant, Support, and Provider health, with honest unavailable states where systems are not yet connected.",
+    "risk": "The familiar dashboard pattern can feel interchangeable without clear operational hierarchy.",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}

@@ -1,0 +1,43 @@
+{
+  "title": "Approve the customer sign-in composition",
+  "question": "These three comps use the customer sign-in direction you selected. Which one should be the build reference? What should carry forward, what feels false, and should it be approved, combined, revised, or rejected?",
+  "options": [
+    {
+      "id": "selected",
+      "label": "Centered sign-in",
+      "kicker": "YOUR SELECTED COMP",
+      "lineage": "The clean, familiar Showoff sign-in screen you selected",
+      "thesis": "A centered form keeps account access direct and predictable.",
+      "palette": ["#ffffff", "#111827", "#2563eb", "#d9dee7"],
+      "materials": ["plain sign-in panel", "clear form controls", "step progress row"],
+      "viewport": "A horizontal account-progress row sits above the centered sign-in panel; providers lead, email and password follow, and one blue Continue button anchors the form.",
+      "risk": "The restrained interface may need extra care in typography and spacing to feel distinct to Showoff.",
+      "comp": ".impeccable/mocks/selected.png"
+    },
+    {
+      "id": "split-setup",
+      "label": "Progress rail and sign-in panel",
+      "lineage": "The same clean Showoff form with persistent setup progress at left",
+      "thesis": "A side rail makes the next organization setup steps visible during sign-in.",
+      "palette": ["#ffffff", "#111827", "#2563eb", "#d9dee7"],
+      "materials": ["vertical progress rail", "open sign-in panel", "blue active step"],
+      "viewport": "The Account, Workspace, and Team sequence sits in a slim left rail beside a larger provider and credential form.",
+      "risk": "The rail could take space away from the sign-in task on smaller screens.",
+      "comp": ".impeccable/mocks/split-setup.png"
+    },
+    {
+      "id": "wide-auth",
+      "label": "Wide authentication panel",
+      "lineage": "A broader form layout using the same familiar Showoff identity",
+      "thesis": "A wide form puts both identity methods and credentials on one scan line.",
+      "palette": ["#ffffff", "#111827", "#2563eb", "#d9dee7"],
+      "materials": ["wide form panel", "side-by-side provider buttons", "two-column credentials"],
+      "viewport": "A horizontal progress row leads into a wide panel with paired provider buttons, paired fields, and a full-width Continue action.",
+      "risk": "The wider field layout must collapse cleanly to one column on phones.",
+      "comp": ".impeccable/mocks/wide-auth.png"
+    }
+  ],
+  "buildPath": { "value": "comp", "toggle": false },
+  "canon": false,
+  "steer": false
+}

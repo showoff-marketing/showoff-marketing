@@ -1,0 +1,116 @@
+{
+  "title": "Choose a visual direction for the Showoff prelaunch page",
+  "question": "Which direction should shape the marketing page? What should carry forward, what feels false to Showoff, and should the selected concept be approved, combined, revised, or rejected?",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Job Ticket Route",
+      "kicker": "THE ROLL",
+      "lineage": "Numbered work tickets on a neighborhood print-shop rail",
+      "thesis": "One ticket links every step of a small business’s marketing run.",
+      "palette": ["#f3eddf", "#171a1d", "#205db4", "#c33832"],
+      "materials": ["uncoated ticket stock", "perforation", "registration marks"],
+      "viewport": "A wide work ticket introduces Showoff, names the seven marketing stages, and ends in one clear waitlist action.",
+      "risk": "The print artifact can feel nostalgic if the workflow is only decoration.",
+      "raised": [
+        {
+          "from": "emission-line rail",
+          "raise": "State remains legible through labels and shape, never color alone."
+        }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned.png"
+    },
+    {
+      "id": "challenger-teletext",
+      "label": "Teletext Service Index",
+      "verdict": "competitive",
+      "lineage": "Broadcast teletext magazines",
+      "thesis": "A numbered service index lays the marketing workflow out in scan-ready rows.",
+      "palette": ["#0000c0", "#ffff00", "#00c000", "#ffffff"],
+      "materials": ["block mosaic", "phosphor display"],
+      "viewport": "A service index introduces Showoff and lays the seven marketing stages out as numbered destinations.",
+      "case": "Product clarity holds: numbered rows make the workflow scannable; the broadcast form is less recognizable to small-business owners.",
+      "risk": "It reads as retro novelty when the grid is not strict.",
+      "comp": ".impeccable/mocks/decision/teletext.png",
+      "hero": "https://impeccable.style/worlds/cards/broadcast-programming-teletext-service-hero.webp"
+    },
+    {
+      "id": "challenger-jacquard",
+      "label": "Punch-Card Weave",
+      "verdict": "declined",
+      "lineage": "Jacquard punched-brocade loom",
+      "thesis": "A marketing workflow woven from instructions into a visible finished pattern.",
+      "palette": ["#071124", "#c5a44d", "#f2e9d7", "#05070d"],
+      "materials": ["punched instruction card", "woven silk"],
+      "case": "Fuses poorly: the textile subject is not familiar to the broad small-business audience, and the woven metaphor obscures Showoff’s product.",
+      "risk": "A craft metaphor can hide the direct marketing job.",
+      "kept": "Every stage should remain traceable through the workflow.",
+      "hero": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-jacquard-punched-brocade-hero.webp"
+    },
+    {
+      "id": "challenger-film",
+      "label": "Hand-Processed Film Strip",
+      "verdict": "declined",
+      "lineage": "16mm hand-processed film",
+      "thesis": "A creative process shown frame by frame through its making.",
+      "palette": ["#c5c3bd", "#151515", "#d87032", "#7f5a39"],
+      "materials": ["silver emulsion", "film leader", "chemical marks"],
+      "case": "Fuses poorly: the audience may recognize creative tools, but the film form competes with explaining the complete Showoff workflow.",
+      "risk": "Wear and light leaks can dominate product clarity.",
+      "kept": "The page can reveal the product sequence in deliberate stages.",
+      "hero": "https://impeccable.style/worlds/cards/cinema-cinematography-editing-hand-processed-film-bloom-hero.webp"
+    },
+    {
+      "id": "challenger-split-flap",
+      "label": "Split-Flap Concourse",
+      "verdict": "declined",
+      "lineage": "Rail-station split-flap departure board",
+      "thesis": "Marketing stages appear as a shared board of time-sensitive departures.",
+      "palette": ["#111111", "#f3f1e8", "#d8a435", "#c53030"],
+      "materials": ["matte letter flaps", "steel frame", "row lamps"],
+      "case": "Fuses poorly: the board suggests changing announcements, not a customer's full marketing work.",
+      "risk": "The letter-flip effect can become the entire story.",
+      "kept": "State labels should be plain and immediately scannable.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse-hero.webp"
+    },
+    {
+      "id": "challenger-chaekgeori",
+      "label": "Reverse-Perspective Cabinet",
+      "verdict": "declined",
+      "lineage": "Korean chaekgeori bookshelf paintings",
+      "thesis": "A set of marketing tools opens outward like a painted cabinet.",
+      "palette": ["#8caa68", "#bd3f30", "#f2eadb"],
+      "materials": ["mineral pigment", "painted inventory shelves"],
+      "case": "Fuses poorly: an inventory of objects does not explain how Showoff connects the marketing workflow.",
+      "risk": "The cabinet may read as decorative product illustration.",
+      "kept": "Keep the full set of workflow capabilities visible together.",
+      "hero": "https://impeccable.style/worlds/cards/graphic-worlds-publishing-chaekgeori-reverse-perspective-hero.webp"
+    },
+    {
+      "id": "challenger-itasha",
+      "label": "Panel-Wrapped Racing Vinyl",
+      "verdict": "declined",
+      "lineage": "Itasha vinyl-wrapped cars",
+      "thesis": "A single oversized creative idea carries across connected marketing panels.",
+      "palette": ["#151515", "#f2f0e8", "#df3f38"],
+      "materials": ["printed vinyl", "panel seams", "race-number roundel"],
+      "case": "Fuses poorly: the loud vehicle form is remote from the everyday job of planning and running small-business marketing.",
+      "risk": "The spectacle can overpower the product explanation.",
+      "kept": "Connected stages should feel like parts of one system.",
+      "hero": "https://impeccable.style/worlds/cards/pop-culture-shelf-itasha-vinyl-wrap-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "comp", "toggle": true },
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A clear marketing page explains the product and makes the waitlist easy to join.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["open grid", "plain product illustration"],
+    "viewport": "A direct headline, a short product explanation, the seven-stage workflow, and one waitlist form.",
+    "risk": "It may feel familiar by design.",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}

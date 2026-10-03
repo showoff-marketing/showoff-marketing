@@ -1,0 +1,2 @@
+-- Keep non-production plans and customer records out of the shared local seed.
+-- Supabase pgTAP tests create isolated, synthetic fixtures for each test file.

@@ -14,3 +14,5 @@ strictDepBuilds: true
 allowBuilds:
   esbuild: true
   sharp: true
+  # Cloudflare's postinstall verifies the platform workerd binary for local worker emulation.
+  workerd: true

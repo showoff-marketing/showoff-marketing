@@ -1,0 +1,91 @@
+name: Deploy to Cloudflare
+
+on:
+  workflow_dispatch:
+    inputs:
+      app:
+        description: Application to deploy
+        required: true
+        type: choice
+        options:
+          - marketing
+          - customer
+          - admin
+      environment:
+        description: Cloudflare deployment environment
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-${{ inputs.app }}-${{ inputs.environment }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: deploy ${{ inputs.app }} to ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    timeout-minutes: 30
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+      PUBLIC_SITE_MODE: ${{ vars.PUBLIC_SITE_MODE }}
+      PUBLIC_APP_URL: ${{ vars.PUBLIC_APP_URL }}
+      PUBLIC_WAITLIST_ENDPOINT: ${{ vars.PUBLIC_WAITLIST_ENDPOINT }}
+      CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+      CUSTOMER_PAGES_PROJECT: ${{ vars.CUSTOMER_PAGES_PROJECT }}
+      ADMIN_PAGES_PROJECT: ${{ vars.ADMIN_PAGES_PROJECT }}
+      VITE_SUPABASE_URL: ${{ vars.SUPABASE_URL }}
+      VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.SUPABASE_PUBLISHABLE_KEY }}
+      CLOUDFLARE_PAGES_BRANCH: ${{ inputs.environment == 'production' && 'main' || 'staging' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.8.1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Verify deployment secrets
+        run: test -n "$CLOUDFLARE_API_TOKEN" && test -n "$CLOUDFLARE_ACCOUNT_ID"
+
+      - name: Build and deploy marketing site
+        if: inputs.app == 'marketing'
+        working-directory: apps/marketing
+        run: |
+          test -n "$PUBLIC_SITE_URL"
+          test -n "$PUBLIC_SITE_MODE"
+          test -n "$CLOUDFLARE_PAGES_PROJECT"
+          pnpm run build
+          pnpm exec wrangler pages deploy ./dist --project-name "$CLOUDFLARE_PAGES_PROJECT" --branch "$CLOUDFLARE_PAGES_BRANCH"
+
+      - name: Build and deploy customer portal
+        if: inputs.app == 'customer'
+        run: |
+          test -n "$CUSTOMER_PAGES_PROJECT"
+          test -n "$VITE_SUPABASE_URL"
+          test -n "$VITE_SUPABASE_PUBLISHABLE_KEY"
+          pnpm --filter @showoff/customer-portal run build
+          pnpm --filter @showoff/customer-portal exec wrangler pages deploy ./dist --project-name "$CUSTOMER_PAGES_PROJECT" --branch "$CLOUDFLARE_PAGES_BRANCH"
+
+      - name: Build and deploy admin portal
+        if: inputs.app == 'admin'
+        run: |
+          test -n "$ADMIN_PAGES_PROJECT"
+          test -n "$VITE_SUPABASE_URL"
+          test -n "$VITE_SUPABASE_PUBLISHABLE_KEY"
+          pnpm --filter @showoff/admin-portal run build
+          pnpm --filter @showoff/admin-portal exec wrangler pages deploy ./dist --project-name "$ADMIN_PAGES_PROJECT" --branch "$CLOUDFLARE_PAGES_BRANCH"

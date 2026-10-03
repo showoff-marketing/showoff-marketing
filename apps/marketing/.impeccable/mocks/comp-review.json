@@ -1,0 +1,43 @@
+{
+  "title": "Approve the marketing prelaunch composition",
+  "question": "These three comps use the marketing screen you selected. Which one should be the build reference? What should carry forward, what feels false, and should it be approved, combined, revised, or rejected?",
+  "options": [
+    {
+      "id": "selected",
+      "label": "Headline with horizontal workflow",
+      "kicker": "YOUR SELECTED COMP",
+      "lineage": "The white Showoff prelaunch page with its seven-stage horizontal workflow",
+      "thesis": "One headline and a connected process row explain Showoff before the waitlist action.",
+      "palette": ["#ffffff", "#111827", "#2563eb", "#d9e4f4"],
+      "materials": ["bold sans-serif headline", "thin blue process icons", "single waitlist action"],
+      "viewport": "A wordmark masthead leads into the left-aligned headline and product description, a seven-stage horizontal icon row, and one blue waitlist button.",
+      "risk": "Seven stages must remain legible across laptop widths and reflow on mobile.",
+      "comp": ".impeccable/mocks/user-selected.png"
+    },
+    {
+      "id": "vertical-workflow",
+      "label": "Copy beside vertical workflow",
+      "lineage": "The selected white, black, and blue system with a vertical process rail",
+      "thesis": "A stacked workflow gives each marketing stage room while the waitlist action stays beside the explanation.",
+      "palette": ["#ffffff", "#111827", "#2563eb", "#d9e4f4"],
+      "materials": ["two-column hero", "vertical stage sequence", "blue waitlist button"],
+      "viewport": "Headline, description, and waitlist action share the left column; seven thin-icon stages form a vertical sequence on the right.",
+      "risk": "The vertical sequence could make the page feel longer and more like application navigation.",
+      "comp": ".impeccable/mocks/vertical-workflow.png"
+    },
+    {
+      "id": "centered-workflow",
+      "label": "Centered prelaunch hero",
+      "lineage": "The selected minimal Showoff page with a centered hero and process row",
+      "thesis": "A centered headline gives the product explanation one clear focal point.",
+      "palette": ["#ffffff", "#111827", "#2563eb", "#d9e4f4"],
+      "materials": ["centered headline", "balanced workflow strip", "prominent waitlist button"],
+      "viewport": "A centered headline and description lead to the waitlist button; the seven-stage icon row fills the lower viewport.",
+      "risk": "The centered composition can feel more generic than the selected left-aligned screen.",
+      "comp": ".impeccable/mocks/centered-workflow.png"
+    }
+  ],
+  "buildPath": { "value": "comp", "toggle": false },
+  "canon": false,
+  "steer": false
+}

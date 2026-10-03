@@ -1,13 +1,585 @@
+@import "tailwindcss";
 
-
-@import 'tailwindcss';
+:root {
+  color: #111827;
+  background: #ffffff;
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  --ink: #111827;
+  --muted: #697586;
+  --line: #d9dee7;
+  --blue: #2563eb;
+  --blue-hover: #1d4ed8;
+  --error: #b42318;
+}
 
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+html {
+  min-width: 320px;
+  background: #fff;
 }
 
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background: #fff;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline: 3px solid #93b4ff;
+  outline-offset: 3px;
+}
+
+.auth-page {
+  min-height: 100vh;
+  padding: 22px clamp(24px, 4.5vw, 70px) 72px;
+}
+
+.auth-header {
+  display: flex;
+  align-items: center;
+  min-height: 34px;
+}
+
+.wordmark {
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 780;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.setup-progress {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: min(420px, 100%);
+  margin: 54px auto 52px;
+  padding: 0;
+  list-style: none;
+}
+
+.setup-progress li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  color: #475467;
+  font-size: 14px;
+  font-weight: 620;
+  text-transform: uppercase;
+}
+
+.setup-progress li.is-current {
+  color: var(--ink);
+  font-weight: 720;
+}
+
+.progress-dot {
+  z-index: 1;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border: 2px solid #c9d0da;
+  border-radius: 50%;
+  color: #fff;
+  background: #fff;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.is-current .progress-dot {
+  border-color: var(--blue);
+  background: var(--blue);
+  box-shadow: 0 0 0 4px #edf3ff;
+}
+
+.is-complete {
+  color: #475467 !important;
+}
+
+.is-complete .progress-dot {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: #fff;
+}
+
+.progress-rule {
+  position: absolute;
+  top: 13px;
+  left: calc(50% + 14px);
+  width: calc(100% - 28px);
+  height: 1px;
+  background: var(--line);
+}
+
+.auth-panel {
+  width: min(544px, 100%);
+  margin: 0 auto;
+  padding: 40px 44px 34px;
+  border: 1px solid #e0e5ec;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 16px 42px rgb(16 24 40 / 5%);
+}
+
+.auth-panel h1,
+.account-panel h1 {
+  margin: 0 0 32px;
+  color: var(--ink);
+  font-size: clamp(26px, 3vw, 32px);
+  font-weight: 760;
+  letter-spacing: -0.035em;
+  line-height: 1.14;
+  text-align: center;
+}
+
+.provider-actions {
+  display: grid;
+  gap: 14px;
+}
+
+.provider-button {
+  display: flex;
+  min-height: 56px;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border: 1px solid #8b95a4;
+  border-radius: 7px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 580;
+  transition:
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+.provider-button:hover:not(:disabled) {
+  border-color: #8994a3;
+  background: #fbfcfe;
+}
+.provider-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.provider-mark {
+  width: 23px;
+  height: 23px;
+  flex: none;
+}
+.apple-mark {
+  width: 22px;
+  height: 22px;
+  fill: #111;
+}
+
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 27px 0 26px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 560;
+}
+
+.form-divider::before,
+.form-divider::after {
+  height: 1px;
+  flex: 1;
+  background: var(--line);
+  content: "";
+}
+
+.auth-form {
+  display: grid;
+  gap: 10px;
+}
+
+.auth-form label {
+  margin-top: 1px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 620;
+}
+
+.auth-form input {
+  width: 100%;
+  min-height: 52px;
+  margin-bottom: 15px;
+  padding: 0 14px;
+  border: 1px solid #8b95a4;
+  border-radius: 7px;
+  color: var(--ink);
+  background: #fff;
+  font-size: 16px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.auth-form input:hover {
+  border-color: #7b8794;
+}
+.auth-form input:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgb(37 99 235 / 12%);
+  outline: none;
+}
+
+.primary-button,
+.secondary-button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  border: 1px solid var(--blue);
+  border-radius: 7px;
+  color: #fff;
+  background: var(--blue);
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 650;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease;
+}
+
+.primary-button:hover:not(:disabled) {
+  border-color: var(--blue-hover);
+  background: var(--blue-hover);
+}
+.primary-button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.primary-button:disabled,
+.secondary-button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.account-switch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 27px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e7ee;
+  color: var(--muted);
+  font-size: 15px;
+}
+
+.text-button {
+  padding: 4px 2px;
+  border: 0;
+  color: var(--blue);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 620;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.text-button:hover:not(:disabled) {
+  color: var(--blue-hover);
+  text-decoration: underline;
+}
+.text-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.form-feedback {
+  margin: 18px 0 0;
+  padding: 12px 14px;
+  border: 1px solid #c8d8ff;
+  border-radius: 8px;
+  color: #1745a3;
+  background: #f5f8ff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.form-feedback.is-error {
+  border-color: #f1b6b1;
+  color: var(--error);
+  background: #fff8f7;
+}
+
+.onboarding-panel {
+  padding-top: 36px;
+}
+.onboarding-panel h1 {
+  margin-bottom: 10px;
+  text-align: left;
+}
+.panel-intro {
+  margin: 0;
+  color: #475467;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.step-label {
+  margin: 0 0 12px;
+  color: #5f6b7b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.onboarding-panel .auth-form {
+  margin-top: 28px;
+}
+.onboarding-panel .auth-form input {
+  margin-bottom: 7px;
+}
+.progress-note {
+  margin: 21px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.onboarding-panel > .text-button {
+  margin-top: 18px;
+}
+
+.customer-loading {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  color: var(--muted);
+}
+
+.product-shell {
+  min-height: 100vh;
+  background: #f7f9fc;
+}
+.product-header {
+  display: flex;
+  min-height: 76px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 clamp(22px, 5vw, 72px);
+  border-bottom: 1px solid #e3e7ee;
+  background: #fff;
+}
+.product-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.workspace-name {
+  max-width: 38vw;
+  overflow: hidden;
+  color: #475467;
+  font-size: 14px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.account-button {
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid #d8dee8;
+  border-radius: 7px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 620;
+}
+.account-button:hover,
+.account-button[aria-pressed="true"] {
+  border-color: #a8b6ca;
+  background: #f8faff;
+}
+.workspace-home,
+.account-panel {
+  width: min(900px, calc(100% - 40px));
+  margin: 76px auto;
+  padding: 44px clamp(24px, 5vw, 56px);
+  border: 1px solid #e0e5ec;
+  border-radius: 14px;
+  background: #fff;
+}
+.workspace-home h1,
+.account-panel h1 {
+  margin: 0 0 14px;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+.workflow-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 11px;
+  margin: 32px 0 0;
+}
+.workflow-stage {
+  padding: 14px;
+  border: 1px solid #e1e7f0;
+  border-radius: 8px;
+  color: #344054;
+  font-size: 15px;
+  font-weight: 610;
+}
+.workspace-status {
+  margin: 26px 0 0;
+  padding-top: 22px;
+  border-top: 1px solid #e6eaf0;
+  color: var(--muted);
+  font-size: 14px;
+}
+.account-panel h1 {
+  margin-bottom: 28px;
+}
+.account-details {
+  display: grid;
+  gap: 0;
+  margin: 0 0 26px;
+  border-top: 1px solid #e4e8ef;
+}
+.account-details > div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid #e4e8ef;
+}
+.account-details dt {
+  color: var(--muted);
+  font-size: 14px;
+}
+.account-details dd {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 570;
+  overflow-wrap: anywhere;
+}
+.secondary-button {
+  border-color: #cbd3de;
+  color: var(--ink);
+  background: #fff;
+  font-size: 15px;
+}
+.secondary-button:hover:not(:disabled) {
+  background: #f6f8fb;
+}
+
+@media (max-width: 600px) {
+  .auth-page {
+    padding: 20px 18px 42px;
+  }
+  .wordmark {
+    font-size: 21px;
+  }
+  .setup-progress {
+    margin: 42px auto 32px;
+  }
+  .setup-progress li {
+    gap: 8px;
+    font-size: 11px;
+  }
+  .progress-dot {
+    width: 25px;
+    height: 25px;
+  }
+  .progress-rule {
+    top: 12px;
+    left: calc(50% + 12px);
+    width: calc(100% - 24px);
+  }
+  .auth-panel {
+    padding: 30px 23px 27px;
+    border-radius: 12px;
+  }
+  .auth-panel h1 {
+    margin-bottom: 27px;
+    font-size: 25px;
+  }
+  .provider-button {
+    min-height: 53px;
+    font-size: 15px;
+  }
+  .form-divider {
+    margin: 23px 0;
+  }
+  .auth-form input {
+    min-height: 50px;
+  }
+  .product-header {
+    min-height: 68px;
+    padding: 0 18px;
+  }
+  .product-header-actions {
+    gap: 10px;
+  }
+  .workspace-name {
+    max-width: 28vw;
+    font-size: 12px;
+  }
+  .account-button {
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 13px;
+  }
+  .workspace-home,
+  .account-panel {
+    width: calc(100% - 28px);
+    margin: 32px auto;
+    padding: 28px 21px;
+  }
+  .workflow-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-top: 25px;
+  }
+  .workflow-stage {
+    padding: 12px;
+    font-size: 14px;
+  }
+  .account-details > div {
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

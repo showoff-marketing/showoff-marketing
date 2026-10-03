@@ -1,6 +1,6 @@
 # showoff-marketing
 
-A minimal TanStack Start app with one route and plain CSS.
+A React single-page app using TanStack Router with Vite and plain CSS.
 
 ```bash
 npm install

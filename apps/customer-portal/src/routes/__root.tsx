@@ -1,42 +1,18 @@
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
-
-import appCss from '../styles.css?url'
+import { createRootRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      {
-        charSet: 'utf-8',
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1',
-      },
-      {
-        title: 'TanStack Start Starter',
-      },
-    ],
-    links: [
-      {
-        rel: 'stylesheet',
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootDocument,
-})
-
-function RootDocument({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-
-        <Scripts />
-      </body>
-    </html>
-  )
-}
+  component: Outlet,
+  errorComponent: ({ error, reset }) => (
+    <main className="customer-loading">
+      <section className="auth-panel" aria-labelledby="page-error-title">
+        <h1 id="page-error-title">We couldn’t open your account</h1>
+        <p className="panel-intro">
+          {error instanceof Error ? error.message : "Check your connection and try again."}
+        </p>
+        <button className="primary-button" type="button" onClick={reset}>
+          Try again
+        </button>
+      </section>
+    </main>
+  ),
+});

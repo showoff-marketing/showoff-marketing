@@ -1,17 +1,151 @@
 ---
+import "../styles/site.css";
+import { getHomeSeo } from "../lib/seo";
+import { getPrimaryCallToAction, getVisibleHomepageSections } from "../lib/site";
 
+const seo = getHomeSeo();
+const sections = getVisibleHomepageSections(seo.mode);
+const appUrl = import.meta.env.PUBLIC_APP_URL?.trim() || "https://app.showoff.marketing";
+const primaryAction = getPrimaryCallToAction(seo.mode, appUrl);
+const waitlistEndpoint = import.meta.env.PUBLIC_WAITLIST_ENDPOINT?.trim() || "";
+
+const stages = [
+  { name: "Plan", icon: ["M8 4h10l4 4v13H8z", "M18 4v5h4", "M11 13h8", "M11 17h6"] },
+  { name: "Create", icon: ["m5 19 3.5-.7L20 6.8 17.2 4 5.7 15.5 5 19Z", "m15.8 5.4 2.8 2.8"] },
+  { name: "Capture", icon: ["M9 18v-1.2a3.8 3.8 0 0 1 7.6 0V18", "M12.8 8.2a2.6 2.6 0 1 1-5.2 0 2.6 2.6 0 0 1 5.2 0Z", "M18 10.2a2.1 2.1 0 1 1 0 4.2", "M19.5 18v-1a3 3 0 0 0-2-2.8"] },
+  { name: "Distribute", icon: ["M4 11.5 21 4l-6.8 17-3.1-7.1L4 11.5Z", "m11.1 13.9 4.2-4.2"] },
+  { name: "Nurture", icon: ["M12 20v-8", "M12 13c-5.2 0-7-3.3-7-7 4.6 0 7 2.4 7 7Z", "M12 16c0-4.5 2.5-7 7-7 0 3.7-1.8 7-7 7Z"] },
+  { name: "Analyze", icon: ["M5 20V12", "M12 20V7", "M19 20V4", "M3.5 20h18"] },
+  { name: "Optimize", icon: ["M12 4.2v2", "M12 17.8v2", "M4.2 12h2", "M17.8 12h2", "m6.5 6.5 1.4 1.4", "m16.1 16.1 1.4 1.4", "m17.5 6.5-1.4 1.4", "m7.9 16.1-1.4 1.4", "M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"] },
+];
 ---
 
-<html lang="en">
+<!doctype html>
+<html lang="en" data-site-mode={seo.mode}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{seo.title}</title>
+		<meta name="description" content={seo.description} />
+		<meta name="robots" content={seo.robots} />
+		<link rel="canonical" href={seo.canonical} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={seo.title} />
+		<meta property="og:description" content={seo.description} />
+		<meta property="og:url" content={seo.canonical} />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		{seo.mode === "maintenance" ? (
+			<main id="main-content" class="maintenance-page">
+				<a class="wordmark" href="/">SHOWOFF</a>
+				<h1>We’ll be back soon.</h1>
+				<p>Showoff is getting ready. Please check back soon.</p>
+			</main>
+		) : (
+			<>
+				<header class="site-header">
+					<a class="wordmark" href="/" aria-label="Showoff home">SHOWOFF</a>
+					<nav class="site-nav" aria-label="Main navigation">
+						<a href="#workflow">How it works</a>
+					</nav>
+					{seo.mode === "prelaunch" && <span class="site-mode">Prelaunch</span>}
+				</header>
+
+				<main id="main-content">
+					{sections.includes("hero") && (
+						<section class="hero-section" aria-labelledby="hero-title">
+							<h1 id="hero-title">Marketing,<br />all in one place.</h1>
+							<p class="hero-description">Plan, create, capture, distribute, nurture, analyze, and optimize your marketing with AI assistance, while you stay in control.</p>
+							{sections.includes("workflow") && (
+								<ol id="workflow" class="workflow" aria-label="The Showoff marketing workflow">
+									{stages.map((stage, index) => (
+										<li class="workflow-step">
+											<span class="workflow-icon">
+												<svg viewBox="0 0 24 24" aria-hidden="true">
+													{stage.icon.map((path) => <path d={path} />)}
+												</svg>
+											</span>
+											<span class="workflow-name">{stage.name}</span>
+											{index < stages.length - 1 && (
+												<svg class="workflow-arrow" viewBox="0 0 20 20" aria-hidden="true"><path d="m7 4 6 6-6 6" /></svg>
+											)}
+										</li>
+									))}
+								</ol>
+							)}
+							{primaryAction && <a class="primary-action" href={primaryAction.href}>{primaryAction.label}</a>}
+						</section>
+					)}
+
+					{sections.includes("waitlist") && (
+						<section id="waitlist" class="waitlist-section" aria-labelledby="waitlist-title">
+							<div>
+								<p class="step-label">EARLY ACCESS</p>
+								<h2 id="waitlist-title">Get a note when Showoff is ready.</h2>
+							</div>
+							<form class="waitlist-form" data-waitlist-form data-endpoint={waitlistEndpoint}>
+								<label for="waitlist-email">Email address</label>
+								<div class="waitlist-fields">
+									<input id="waitlist-email" name="email" type="email" autocomplete="email" required />
+									<button type="submit" disabled={!waitlistEndpoint}>Request early access</button>
+								</div>
+								<p class="waitlist-message" data-waitlist-message role="status">
+									{waitlistEndpoint ? "" : "Waitlist sign-up is not connected yet."}
+								</p>
+							</form>
+						</section>
+					)}
+
+					{sections.includes("final_cta") && primaryAction && (
+						<section class="final-cta" aria-labelledby="final-cta-title">
+							<h2 id="final-cta-title">Bring your marketing work together.</h2>
+							<a class="primary-action" href={primaryAction.href}>{primaryAction.label}</a>
+						</section>
+					)}
+				</main>
+
+				<footer class="site-footer">
+					<a class="wordmark" href="/" aria-label="Showoff home">SHOWOFF</a>
+					<p>Plan, create, capture, distribute, nurture, analyze, and optimize.</p>
+					<a href="#workflow">Workflow</a>
+				</footer>
+			</>
+		)}
+		<script>
+			const waitlistForm = document.querySelector<HTMLFormElement>("[data-waitlist-form]");
+			const waitlistMessage = document.querySelector<HTMLElement>("[data-waitlist-message]");
+
+			waitlistForm?.addEventListener("submit", async (event) => {
+				event.preventDefault();
+				const endpoint = waitlistForm.dataset.endpoint;
+				const email = new FormData(waitlistForm).get("email");
+				if (!endpoint || typeof email !== "string") return;
+
+				const submitButton = waitlistForm.querySelector<HTMLButtonElement>("button[type=submit]");
+				if (submitButton) {
+					submitButton.disabled = true;
+					submitButton.textContent = "Sending…";
+				}
+				if (waitlistMessage) waitlistMessage.textContent = "";
+
+				try {
+					const response = await fetch(endpoint, {
+						method: "POST",
+						headers: { "content-type": "application/json", "x-correlation-id": crypto.randomUUID() },
+						body: JSON.stringify({ email, source: window.location.pathname }),
+					});
+					if (!response.ok) throw new Error("The request was not accepted.");
+					waitlistForm.reset();
+					if (waitlistMessage) waitlistMessage.textContent = "Thanks. Your request has been received.";
+				} catch {
+					if (waitlistMessage) waitlistMessage.textContent = "We couldn’t send that request. Please try again.";
+					if (submitButton) submitButton.disabled = false;
+				} finally {
+					if (submitButton) submitButton.textContent = "Request early access";
+				}
+			});
+		</script>
 	</body>
 </html>

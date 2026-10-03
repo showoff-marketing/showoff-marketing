@@ -1,0 +1,43 @@
+{
+  "title": "Approve the admin overview composition",
+  "question": "These three comps use the admin index direction you selected. Which one should be the build reference? What should carry forward, what feels false, and should it be approved, combined, revised, or rejected?",
+  "options": [
+    {
+      "id": "selected",
+      "label": "Three-column operations index",
+      "kicker": "YOUR SELECTED COMP",
+      "lineage": "A precise design-annual index with three equal operational sections",
+      "thesis": "A disciplined index makes Tenant, Support, and Provider health easy to scan.",
+      "palette": ["#ffffff", "#181818", "#2459d3", "#c8c7c2"],
+      "materials": ["editorial index", "hairline rules", "three equal status panels"],
+      "viewport": "A compact horizontal nav sits above three equal columns; each section shows an explicit unavailable state until connected data exists.",
+      "risk": "Equal panels may understate the different depth of tenant, support, and provider workflows.",
+      "comp": ".impeccable/mocks/selected.png"
+    },
+    {
+      "id": "stacked-index",
+      "label": "Stacked operations index",
+      "lineage": "The same editorial index, arranged as three horizontal rows",
+      "thesis": "A vertical list keeps every operational area readable at full width.",
+      "palette": ["#ffffff", "#181818", "#2459d3", "#c8c7c2"],
+      "materials": ["full-width index rows", "hairline separators", "right-aligned unavailable states"],
+      "viewport": "Tenant, Support, and Provider health each occupy an equal horizontal row with the label left and unavailable state right.",
+      "risk": "Stacked rows use more page height as real data becomes available.",
+      "comp": ".impeccable/mocks/stacked-index.png"
+    },
+    {
+      "id": "sidebar-index",
+      "label": "Side-rail operations index",
+      "lineage": "The selected editorial index with persistent vertical application navigation",
+      "thesis": "A side rail keeps operational sections within reach while preserving the three-way overview.",
+      "palette": ["#ffffff", "#181818", "#2459d3", "#c8c7c2"],
+      "materials": ["vertical index rail", "three equal status panels", "thin rules"],
+      "viewport": "A narrow navigation rail anchors the shell; the main area retains three equal unavailable-state panels.",
+      "risk": "A persistent rail reduces the width available to the overview at laptop sizes.",
+      "comp": ".impeccable/mocks/sidebar-index.png"
+    }
+  ],
+  "buildPath": { "value": "comp", "toggle": false },
+  "canon": false,
+  "steer": false
+}

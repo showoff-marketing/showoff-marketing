@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-02T20:01:31Z",
+  "title": "Design System: Showoff",
+  "extensions": {
+    "typographyMeta": {
+      "display": {
+        "displayName": "Marketing Display",
+        "purpose": "Large marketing headline, set in Inter with a responsive size."
+      },
+      "headline": {
+        "displayName": "Product Headline",
+        "purpose": "Admin overview title."
+      },
+      "title": {
+        "displayName": "Task Title",
+        "purpose": "Customer sign-in heading."
+      }
+    },
+    "shadows": [
+      {
+        "name": "customer-panel",
+        "value": "0 16px 42px rgb(16 24 40 / 5%)",
+        "purpose": "Restrained ambient depth beneath the customer authentication panel."
+      }
+    ],
+    "motion": [
+      {
+        "name": "customer-control",
+        "value": "160ms ease",
+        "purpose": "Customer button and field state transitions."
+      },
+      {
+        "name": "marketing-control",
+        "value": "160ms ease",
+        "purpose": "Marketing action hover transitions."
+      }
+    ],
+    "breakpoints": [
+      { "name": "customer-small", "value": "600px" },
+      { "name": "admin-mobile", "value": "760px" },
+      { "name": "marketing-tablet", "value": "980px" },
+      { "name": "marketing-mobile", "value": "620px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Customer Primary Button",
+      "kind": "button",
+      "refersTo": "customer-primary-button",
+      "description": "Advances sign-in or workspace setup.",
+      "html": "<button class=\"ds-customer-primary\">Continue</button>",
+      "css": ".ds-customer-primary{display:inline-flex;min-height:54px;align-items:center;justify-content:center;padding:0 20px;border:1px solid #2563eb;border-radius:7px;color:#fff;background:#2563eb;font:650 17px Inter,ui-sans-serif,system-ui,sans-serif;transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}.ds-customer-primary:hover{border-color:#1d4ed8;background:#1d4ed8}.ds-customer-primary:focus-visible{outline:3px solid #93b4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Customer Text Field",
+      "kind": "input",
+      "refersTo": "customer-input",
+      "description": "Labeled email, password, or workspace-name input.",
+      "html": "<label class=\"ds-customer-label\" for=\"ds-customer-email\">Email</label><input class=\"ds-customer-input\" id=\"ds-customer-email\" type=\"email\" />",
+      "css": ".ds-customer-label{display:block;margin-bottom:8px;color:#111827;font:620 15px Inter,ui-sans-serif,system-ui,sans-serif}.ds-customer-input{width:100%;min-height:52px;padding:0 14px;border:1px solid #8b95a4;border-radius:7px;color:#111827;background:#fff;font:400 16px Inter,ui-sans-serif,system-ui,sans-serif}.ds-customer-input:hover{border-color:#7b8794}.ds-customer-input:focus-visible{border-color:#2563eb;outline:3px solid #93b4ff;outline-offset:3px}"
+    },
+    {
+      "name": "Customer Sign-in Panel",
+      "kind": "card",
+      "refersTo": "customer-panel",
+      "description": "Groups provider and email sign-in methods in the customer entry flow.",
+      "html": "<section class=\"ds-customer-panel\"><h2>Sign in to Showoff</h2><p>Choose a way to continue.</p></section>",
+      "css": ".ds-customer-panel{padding:40px 44px 34px;border:1px solid #e0e5ec;border-radius:14px;background:#fff;box-shadow:0 16px 42px rgb(16 24 40 / 5%);font-family:Inter,ui-sans-serif,system-ui,sans-serif}.ds-customer-panel h2{margin:0 0 24px;color:#111827;font-size:30px;font-weight:760}.ds-customer-panel p{margin:0;color:#697586;font-size:15px;line-height:1.5}"
+    },
+    {
+      "name": "Marketing Primary Action",
+      "kind": "button",
+      "refersTo": "marketing-primary-action",
+      "description": "The single prominent path from the prelaunch explanation to waitlist details.",
+      "html": "<a class=\"ds-marketing-action\" href=\"#waitlist\">Join the waitlist</a>",
+      "css": ".ds-marketing-action{display:inline-flex;min-height:78px;align-items:center;justify-content:center;padding:0 50px;border:1px solid #2563eb;border-radius:2px;color:#fff;background:#2563eb;box-shadow:0 7px 18px rgb(22 129 248 / 12%);font:730 16px Inter,ui-sans-serif,system-ui,sans-serif;letter-spacing:.18em;text-decoration:none;text-transform:uppercase;transition:background-color 160ms ease,border-color 160ms ease,transform 160ms ease}.ds-marketing-action:hover{transform:translateY(-2px);border-color:#0867d3;background:#0867d3}.ds-marketing-action:focus-visible{outline:3px solid #1d4ed8;outline-offset:4px}"
+    },
+    {
+      "name": "Admin Navigation",
+      "kind": "nav",
+      "refersTo": "admin-navigation",
+      "description": "Five compact destinations with a blue active state and underline.",
+      "html": "<nav class=\"ds-admin-nav\"><button class=\"is-active\" aria-current=\"page\">Overview</button><button>Tenants</button><button>Support</button></nav>",
+      "css": ".ds-admin-nav{display:flex;gap:32px;border-bottom:1px solid #d9dee5;font:680 14px Inter,ui-sans-serif,system-ui,sans-serif}.ds-admin-nav a{padding:14px 10px;color:#545b64;text-decoration:none}.ds-admin-nav a[aria-current=page]{border-bottom:2px solid #2459d3;color:#2459d3}.ds-admin-nav a:focus-visible{outline:3px solid #2459d3;outline-offset:2px}"
+    },
+    {
+      "name": "Admin Index Panel",
+      "kind": "card",
+      "refersTo": "admin-index-panel",
+      "description": "An equal-weight operational area with an explicit unavailable state.",
+      "html": "<section class=\"ds-admin-panel\"><h2>Tenants</h2><p>No operational data is connected yet.</p></section>",
+      "css": ".ds-admin-panel{display:flex;min-height:690px;flex-direction:column;padding:35px 26px;border:1px solid #dce1e7;border-radius:6px;background:#fff;font-family:Inter,ui-sans-serif,system-ui,sans-serif}.ds-admin-panel h2{margin:0;color:#171a1d;font-size:24px;font-weight:720;text-transform:uppercase}.ds-admin-panel p{max-width:28ch;margin:auto;color:#68707c;font-size:16px;line-height:1.5;text-align:center}"
+    }
+  ],
+  "narrative": {
+    "northStar": "A clear line from idea to action (inferred from the selected comps).",
+    "overview": "Across the supplied first-screen references, Showoff uses a white field, dark sans-serif type, blue action cues, and precise borders to keep the work easy to scan. The shared foundation is quiet and functional. The exact page composition follows the job of each surface: account entry centers a compact form and setup progress, marketing lays out a seven-stage process, and admin presents three balanced operational areas.\n\nTreat this as a shared visual vocabulary, not a shared page template. Preserve the boundary between the public marketing site, the customer workspace, and the separate admin portal. The values describe the implemented code and reviewed captures.",
+    "keyCharacteristics": [
+      "White backgrounds with near-black headings and readable gray body text.",
+      "Blue is reserved for active progress, links, and primary actions.",
+      "Inter-led typography and thin rules make information hierarchy explicit.",
+      "Each surface keeps its own layout and interaction purpose."
+    ],
+    "rules": [
+      {
+        "name": "The Blue Action Rule",
+        "body": "Use each surface's established blue for actionable or active elements; keep decorative diagrams and status meaning legible without color alone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Separate Surface Rule",
+        "body": "Reuse color, type, and control language while keeping the three distinct application layouts intact.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "Do keep text and controls at the verified contrast levels used in the finished surfaces.",
+      "Do distinguish unavailable admin data with a text label and explanation, not color alone.",
+      "Do keep the marketing waitlist's unconfigured state explicit and its submit action disabled.",
+      "Do preserve each application's distinct layout and responsive behavior."
+    ],
+    "donts": [
+      "Don't invent admin counts, incidents, customers, or provider health values for an empty system.",
+      "Don't show an enabled waitlist submission when no endpoint is configured.",
+      "Don't merge the public marketing site, customer workspace, and admin portal into one navigation or page shell."
+    ]
+  }
+}

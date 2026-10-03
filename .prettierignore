@@ -1,0 +1,11 @@
+# Embedded Impeccable tooling and per-app authoring context are maintained independently.
+/.agents/
+/.codex/
+**/.impeccable/
+**/.wrangler/
+**/PRODUCT.md
+**/routeTree.gen.ts
+
+# Preserve repository guidance and the staged consolidated PRD as user-authored source material.
+/AGENTS.md
+/docs/prd.md
